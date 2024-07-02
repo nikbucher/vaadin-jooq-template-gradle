@@ -1,31 +1,33 @@
-# Vaadin/jOOQ Template
+# Vaadin/jOOQ Template using Gradle
 
 ## Introduction
 
-This is a template project that shows how to integrate [Vaadin](https://vaadin.com) and [jOOQ](https://jooq.org) 
-and how to test it with [Karibu Testing](https://github.com/mvysny/karibu-testing) and [Playwright](https://playwright.dev).
+This project is a fork from [Simon Martinelli's vaadin-jooq-template](https://github.com/simasch/vaadin-jooq-template).
 
-It uses [Testcontainers](https://testcontainers.com) for generating the jOOQ classes and integration testing and 
-Flyway for the database migrations.
+This project is a template that demonstrates how to integrate [Vaadin](https://vaadin.com) and [jOOQ](https://jooq.org) using Gradle.
+It also showcases how to test the application with [Karibu Testing](https://github.com/mvysny/karibu-testing) and [Playwright](https://playwright.dev). The project
+utilizes [Testcontainers](https://testcontainers.com) for generating jOOQ classes and performing integration testing, and [Flyway](https://flywaydb.org) for database migrations.
 
-This project can be used as a starting point to create your own Vaadin application with jOOQ.
-It contains all the necessary configuration and some examples to get you started.
+This template can serve as a starting point for creating your own Vaadin application with jOOQ.
+It includes all necessary configurations and some examples to help you get started.
 
 ## Running the Application
 
-Before running the application, the jOOQ metamodel has to be generated using the Maven plugin:
+Before running the application, the jOOQ metamodel has to be generated using the Gradle plugin:
 
-    ./mvnw compile
+```bash
+./gradlew classes
+```
 
 Then you can simply run the application with a database started by Testcontainers from your IDE using the `TestVjApplication`.
 
 **Important:**
-This class uses the [Spring Boot Testcontainers support](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1/), introduced with Spring Boot 3.1.
-Thus, [Docker](https://www.docker.com) or [Testcontainers Cloud](https://testcontainers.com/cloud/) must be running on your local computer.
+The class `TestVjApplication` uses the [Spring Boot Testcontainers support](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1), introduced with Spring Boot 3.1.
+Therefore, [Docker](https://www.docker.com) or [Testcontainers Cloud](https://testcontainers.com/cloud/) must be running on your local computer.
 
 ## Testing the Application
 
-There are two base classes:
+There are two base classes for testing:
 
 - `KaribuTest` can be used for fast [browser-less testing](https://mvysny.github.io/browserless-web-testing/), aka UI unit test. Karibu sets up a Vaadin mock environment.
 - `PlaywrightIT` configures Playwright for E2E tests. This class uses SpringBootTest at a random port.
@@ -35,14 +37,26 @@ which simplifies the testing of Vaadin applications with Playwright.
 
 ## Deploying to Production
 
-To create a production build, call `mvnw clean package -Pproduction` (Windows),
-or `./mvnw clean package -Pproduction` (Mac & Linux).
+To create a production build, run:
 
-This will build a JAR file with all the dependencies and front-end resources,
-ready to be deployed. You can find the file in the `target` folder after the build completes.
+**Windows:**
+```bash
+gradlew.bat clean assemble -Pvaadin.productionMode=true
+```
 
-Once the JAR file is built, you can run it using
-`java -jar target/vaadin-jooq-template-<version>.jar`
+**Mac & Linux:**
+```bash
+./gradlew clean assemble -Pvaadin.productionMode=true
+```
+
+This will build a JAR file with all dependencies and front-end resources, ready to be deployed.
+You can find the file in the `build/libs` folder after the build completes.
+
+Once the JAR file is built, you can run it using:
+
+```bash
+java -jar build/libs/vaadin-jooq-template-gradle-<version>.jar
+```
 
 ## Project structure
 
@@ -85,3 +99,7 @@ Read more in the blog of [Matti Tahvonen](https://vaadin.com/blog/jwt-authentica
 ### Playwright
 
 - Read the [documentation](https://playwright.dev).
+
+### Gradle
+
+- Read the [Gradle documentation](https://docs.gradle.org/).

@@ -1,10 +1,10 @@
-name: Java CI with Maven
+name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main-gradle" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main-gradle" ]
 
 jobs:
   build:
@@ -18,6 +18,6 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn -B verify
+        cache: gradle
+    - name: Build with Gradle
+      run: gradle check

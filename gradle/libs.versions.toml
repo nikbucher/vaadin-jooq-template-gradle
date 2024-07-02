@@ -1,0 +1,43 @@
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+archunit = "1.0.1"
+flyway = "10.10.0" # sync with spring boot https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
+io72-vaadin-jooq = "2.0.4" # https://github.com/72services/vaadin-jooq https://repo1.maven.org/maven2/io/seventytwo/oss/vaadin-jooq/maven-metadata.xml
+java = "21"
+jooq = "3.19.10" # sync with spring boot https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
+karibu-testing = "2.1.6" # https://github.com/mvysny/karibu-testing https://repo1.maven.org/maven2/com/github/mvysny/kaributesting/karibu-testing-v24/maven-metadata.xml
+microsoft-playwright = "1.25.0" # https://playwright.dev/docs/intro https://repo1.maven.org/maven2/com/microsoft/playwright/playwright/maven-metadata.xml
+spring-boot = "3.3.1" # https://docs.spring.io/spring-boot/index.html https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/maven-metadata.xml
+vaadin = "24.4.4" # https://vaadin.com/docs/latest/ https://repo1.maven.org/maven2/com/vaadin/vaadin/maven-metadata.xml
+virit-mopo = "0.0.1"
+
+[libraries]
+archunit = { module = "com.tngtech.archunit:archunit", version.ref = "archunit" }
+flyway-core = { module = "org.flywaydb:flyway-core" }
+flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql" }
+io72-vaadin-jooq = { module = "io.seventytwo.oss:vaadin-jooq", version.ref = "io72-vaadin-jooq" }
+karibu-testing = { module = "com.github.mvysny.kaributesting:karibu-testing-v10-spring", version.ref = "karibu-testing" }
+microsoft-playwright = { module = "com.microsoft.playwright:playwright", version.ref = "microsoft-playwright" }
+postgresql = { module = "org.postgresql:postgresql" }
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
+spring-boot-starter-jooq = { module = "org.springframework.boot:spring-boot-starter-jooq" }
+spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers" }
+spring-security-oauth2-jose = { module = "org.springframework.security:spring-security-oauth2-jose" }
+spring-security-oauth2-resource-server = { module = "org.springframework.security:spring-security-oauth2-resource-server" }
+testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql" }
+vaadin-bom = { module = "com.vaadin:vaadin-bom", version.ref = "vaadin" }
+vaadin-core = { module = "com.vaadin:vaadin-core" }
+vaadin-spring-boot-starter = { module = "com.vaadin:vaadin-spring-boot-starter" }
+virit-mopo = { module = "in.virit:mopo", version.ref = "virit-mopo" }
+
+[plugins]
+jooq-codegen = { id = "org.jooq.jooq-codegen-gradle", version.ref = "jooq" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+vaadin = { id = "com.vaadin", version.ref = "vaadin" }
+flyway = { id = "org.flywaydb.flyway", version.ref = "flyway" }
