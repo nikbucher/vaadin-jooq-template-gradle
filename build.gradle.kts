@@ -57,8 +57,12 @@ jooq {
 }
 
 dependencies {
+    annotationProcessor(enforcedPlatform(libs.spring.boot.bom))
     implementation(enforcedPlatform(libs.spring.boot.bom))
     implementation(enforcedPlatform(libs.vaadin.bom))
+    developmentOnly(enforcedPlatform(libs.spring.boot.bom))
+    runtimeOnly(enforcedPlatform(libs.spring.boot.bom))
+    testImplementation(enforcedPlatform(libs.spring.boot.bom))
 
     implementation(libs.spring.boot.starter.security)
     implementation(libs.spring.boot.starter.validation)
@@ -74,13 +78,13 @@ dependencies {
     }
     implementation(libs.vaadin.spring.boot.starter)
 
-    developmentOnly(enforcedPlatform(libs.spring.boot.bom))
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
+
     developmentOnly(libs.spring.boot.devtools)
 
-    runtimeOnly(enforcedPlatform(libs.spring.boot.bom))
     runtimeOnly(libs.postgresql)
 
-    testImplementation(enforcedPlatform(libs.spring.boot.bom))
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.spring.boot.testcontainers)
     testImplementation(libs.testcontainers.junit.jupiter)

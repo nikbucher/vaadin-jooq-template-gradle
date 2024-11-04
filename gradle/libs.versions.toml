@@ -18,6 +18,7 @@ flyway-core = { module = "org.flywaydb:flyway-core" }
 flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql" }
 io72-vaadin-jooq = { module = "io.seventytwo.oss:vaadin-jooq", version.ref = "io72-vaadin-jooq" }
 karibu-testing = { module = "com.github.mvysny.kaributesting:karibu-testing-v10-spring", version.ref = "karibu-testing" }
+lombok = { module = "org.projectlombok:lombok" }
 microsoft-playwright = { module = "com.microsoft.playwright:playwright", version.ref = "microsoft-playwright" }
 postgresql = { module = "org.postgresql:postgresql" }
 spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
